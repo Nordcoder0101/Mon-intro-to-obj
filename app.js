@@ -5,47 +5,57 @@ function randomCustperHour(min, max){
 };
 
 //This f is for finding an hourly average of sales*//
-var oneHourAvgSales;
 
-function hourByHour(avgSale, cookiePerHour) {
-  var oneHourAvgSales = (avgSale * cookiePer);
-  console.log(oneHourAvg, 'is the one hour avg');
-  return oneHourSalesAvg;
-};
+StoreMaker.prototype.hourByHour = function(randomCust, cookiePerHour) {
+  var randomSalePerHour = randomCustperHour((this.maxCust, this.minCust) * cookiePerHour);
+  return randomSaleperHour;
+  console.log(randomSaleperHour);
+  for(i = 0; i < openHours.length; i++) {
+    salesPerHour[i].push(randomSalePerHour);
+    return this.location + 'at' + openHours[i] + 'sold' + randomSalePerHour + 'cookies.';
+    console.log(this.location + 'at' + openHours[i] + 'sold' + randomSalePerHour + 'cookies.');
+    return salesPerHour[i];
+    console.log(salesPerHour[i]);
+  };
+  StoreMaker.prototype.hourByHour(this.avgCustPerHour, this.avgCookieSale);
+  console.log (StoreMaker.prototype.hourByHour(), this.avgCookieSale);
 
-var avg;
+  // StoreMaker.prototype.hourByHour(, this.avgCookieSale);
 
-function avgCustPerHour() {
-  var avg = randomCustperHour(this.maxCust, this.minCust);
-  console.log(avg);
-  return avg;
-};
+  StoreMaker.prototype.avgCustPerHour = function() {
+    avg = randomCustperHour(this.maxCust, this.minCust);
+    console.log(avg);
+    return avg;
+  };
 
-function randomPerHourSale() {
-  var oneHourAvg = hourByHour(avg, this.avgCookieSale);
-  console.log(oneHourAvg, 'is a one hour sales average per suctomer');
-  return oneHourAvg;
-
-
+  StoreMaker.prototype.randomPerHourSale = function() {
+    var oneHourAvg = hourByHour(avgCustPerHour(), this.avgCookieSale);
+    return oneHourAvg;
+    console.log('the random sales per hour is', oneHourAvg);
+  };
 };
 
 var table = document.getElementById('table content');
 var stores = [];
 var tableInfo = [];
+var openHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+var salesPerHour = [];
+
+
 
 function StoreMaker(location, minCust, maxCust, avgCookieSale, openHours) {
   this.location = location;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookieSale = avgCookieSale;
-  this.openHours = '6am' + '7am' + '8am' + '9am' + '10am' ;
+  this.hoursOpen = openHours;
 }
 
-var firstPike = new StoreMaker('1st and Pike', 23, 65, 6.3);
-var seaTac = new StoreMaker('Seatac Airport', 3, 24, 1.2);
-var seattleCenter = new StoreMaker('Seattle Center', 11, 38, 3.7);
-var capitalHill = new StoreMaker('Capital Hill', 20, 38, 2.3);
-var alki = new StoreMaker('Alki', 2, 16, 4.6);
+var firstPike = new StoreMaker('1st and Pike', 23, 65, 6.3, openHours);
+var seaTac = new StoreMaker('Seatac Airport', 3, 24, 1.2, openHours);
+var seattleCenter = new StoreMaker('Seattle Center', 11, 38, 3.7, openHours);
+var capitalHill = new StoreMaker('Capital Hill', 20, 38, 2.3, openHours);
+var alki = new StoreMaker('Alki', 2, 16, 4.6, openHours);
 
 stores.push(firstPike);
 stores.push(seaTac);
@@ -66,3 +76,4 @@ console.log(seaTac);
 console.log(seattleCenter);
 console.log(capitalHill);
 console.log(alki);
+console.log(stores);
