@@ -1,111 +1,68 @@
 'use strict';
+// Here is a function to find a random number.*//
 function randomCustperHour(min, max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-function hourByHour(avgSale, cookiePer) {
-  var oneHourAvg = (avgSale * cookiePer);
+//This f is for finding an hourly average of sales*//
+var oneHourAvgSales;
+
+function hourByHour(avgSale, cookiePerHour) {
+  var oneHourAvgSales = (avgSale * cookiePer);
   console.log(oneHourAvg, 'is the one hour avg');
+  return oneHourSalesAvg;
+};
+
+var avg;
+
+function avgCustPerHour() {
+  var avg = randomCustperHour(this.maxCust, this.minCust);
+  console.log(avg);
+  return avg;
+};
+
+function randomPerHourSale() {
+  var oneHourAvg = hourByHour(avg, this.avgCookieSale);
+  console.log(oneHourAvg, 'is a one hour sales average per suctomer');
   return oneHourAvg;
+
+
 };
 
-var numHours = 15;
+var table = document.getElementById('table content');
+var stores = [];
+var tableInfo = [];
 
-var allStores = [];
+function StoreMaker(location, minCust, maxCust, avgCookieSale, openHours) {
+  this.location = location;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgCookieSale = avgCookieSale;
+  this.openHours = '6am' + '7am' + '8am' + '9am' + '10am' ;
+}
 
+var firstPike = new StoreMaker('1st and Pike', 23, 65, 6.3);
+var seaTac = new StoreMaker('Seatac Airport', 3, 24, 1.2);
+var seattleCenter = new StoreMaker('Seattle Center', 11, 38, 3.7);
+var capitalHill = new StoreMaker('Capital Hill', 20, 38, 2.3);
+var alki = new StoreMaker('Alki', 2, 16, 4.6);
 
-var pikeFirst = {
-  location: '1st and Pike',
-  minCust: 23,
-  maxCust: 65,
-  avgCookieSale: 6.3,
-  avgCustPerHour: function() {
-    var avg = randomCustperHour(this.maxCust, this.minCust);
-    console.log('avg', avg);
-    return avg;
-  },
-  avgCookieHour: function(){
-    var oneHourAvg = hourByHour(this.avgCustPerHour(), this.avgCookieSale);
-    console.log(oneHourAvg, 'is a one hour average');
-    return oneHourAvg;
-  },
-};
-pikeFirst.avgCustPerHour();
-pikeFirst.avgCookieHour();
+stores.push(firstPike);
+stores.push(seaTac);
+stores.push(seattleCenter);
+stores.push(capitalHill);
+stores.push(alki);
 
-
-var seaTac = {
-  location: 'Seatac Airport',
-  minCust: 3,
-  maxCust: 24,
-  avgCookieSale: 1.2,
-  avgCustPerHour: function() {
-    var avg = randomCustperHour(this.maxCust, this.minCust);
-    console.log('avg seaTac', avg);
-    return avg;
-  },
-  avgCookieHour: function(){
-    var oneHourAvg = hourByHour(this.avgCustPerHour(), this.avgCookieSale);
-    console.log(oneHourAvg, 'is a one hour average');
-    return oneHourAvg;
-  },
-};
-seaTac.avgCustPerHour();
-seaTac.avgCookieHour();
-
-var seattleCenter = {
-  location: 'Seattle Center',
-  minCust: 11,
-  maxCust: 38,
-  avgCookieSale: 3.7,
-  avgCustPerHour: function() {
-    var avg = randomCustperHour(this.maxCust, this.minCust);
-    console.log('avg seattleCenter', avg);
-    return avg;
-  },
-  avgCookieHour: function() {
-    var oneHourAvg = hourByHour(this.avgCustPerHour(), this.avgCookieSale);
-    console.log(oneHourAvg, 'is a one hour average');
-    return oneHourAvg;
-  }
-};
-
-
-seattleCenter.avgCustPerHour();
-seattleCenter.avgCookieHour();
-
-var captitalHill = {
-  location: 'Capital Hill',
-  minCust: 20,
-  maxCust: 38,
-  avgCookieSale: 2.3,
-  avgCustPerHour: function() {
-    var avg = randomCustperHour(this.maxCust, this.minCust);
-    console.log('avg CaptitalHill', avg);
-    return avg;
-  }
-};
-captitalHill.avgCustPerHour();
-pikeFirst.avgCookieHour();
-
-var alki = {
-  location: 'Alki',
-  minCust: 2,
-  maxCust: 16,
-  avgCookieSale: 4.6,
-  avgCustPerHour: function() {
-    var avg = randomCustperHour(this.maxCust, this.minCust);
-    console.log('avg for Alki', avg);
-    return avg;
-  },
-  daySalesLog: [],
-  avgCookieHour: function() {
-    var oneHourAvg = hourByHour(this.avgCustPerHour(), this.avgCookieSale);
-    console.log(oneHourAvg, 'is a one hour average');
-    return oneHourAvg;
-    
-    }
-  }
-};
-alki.avgCustPerHour();
-alki.avgCookieHour();
+for (var i = 0; i < stores.length; i++) {
+  tableInfo.push(
+    '<td>' + stores[i].location + '</td>' +
+    '<td>' + stores[i].minCust + '</td>' +
+    '<td>' + stores[i].maxCust + '</td>' +
+    '<td>' + stores[i].avgCookieSale + '</td>'
+  );
+}
+console.log(firstPike);
+console.log(seaTac);
+console.log(seattleCenter);
+console.log(capitalHill);
+console.log(alki);
