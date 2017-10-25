@@ -12,10 +12,10 @@ StoreMaker.prototype.hourByHour = function(randomCust, cookiePerHour) {
   console.log(randomSaleperHour);
   for(i = 0; i < openHours.length; i++) {
     salesPerHour[i].push(randomSalePerHour);
-    return this.location + 'at' + openHours[i] + 'sold' + randomSalePerHour + 'cookies.';
+    var salesMessage = this.location + 'at' + openHours[i] + 'sold' + randomSalePerHour + 'cookies.';
     console.log(this.location + 'at' + openHours[i] + 'sold' + randomSalePerHour + 'cookies.');
-    return salesPerHour[i];
-    console.log(salesPerHour[i]);
+    return salesMessage;
+    console.log(salesMessage);
   };
   StoreMaker.prototype.hourByHour(this.avgCustPerHour, this.avgCookieSale);
   console.log (StoreMaker.prototype.hourByHour(), this.avgCookieSale);

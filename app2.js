@@ -20,20 +20,20 @@ function formArrayOfStores(event) {
   var maxCust = event.target.max_cust.value;
   var avgCookieSale = event.target.cookies_per_customer.value;
 
-  objectOfStores.push = new MakeStore(location, minCust, maxCust, avgCookieSale);
+  arrayOfStores.push = new MakeStore(location, minCust, maxCust, avgCookieSale);
   createTable();
-  cookiestoreinfo.reset();
+  cookieStoreInfo.reset();
 }
 
 function createTable() {
   var row;
   for (var i = 0; i < objectOfStores.length; i++) {
     row = document.createElement('tr');
-    row.innerHTML = '<td>' + objectOfStores[i].location + '</td>' +
-    '<td>' + objectOfStores[i].minCust + '</td>' +
-    '<td>' + objectOfStores[i].maxCust + '</td>' +
-    '<td>' + objectOfStores[i].avgCookieSale + '</td>';
+    row.innerHTML = '<td>' + arrayOfStores[i].location + '</td>' +
+    '<td>' + arrayOfStores[i].min_cust + '</td>' +
+    '<td>' + arrayOfStores[i].max_cust + '</td>' +
+    '<td>' + arrayOfStores[i].cookies_per_customer + '</td>';
   }
-  table.appendChild(row);
+  tableStoreDisplay.appendChild(row);
 }
-arrayOfStores.addEventListener('submit', formArrayOfStores);
+cookieStoreInfo.addEventListener('submit', formArrayOfStores);
