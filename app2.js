@@ -5,15 +5,17 @@ var arrayOfStores = [];
 
 
 function salesPerHour(maxCust, minCust, avgCookieSale, numHours) {
-  var randomCustPerHour = function(min, max){;
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  var randomCustPerHour = function(){;
+    return Math.floor((Math.random() * (maxCust - minCust)) + minCust);
   };
   var cookieArray = [];
   for(var i = 0; i < numHours; i++) {
-    var customers = randomCustPerHour(minCust, maxCust);
-    var openHoursData = customers * avgCookieSale;
-    cookieArray[i] = openHoursData;
+    var customers = randomCustPerHour();
+    console.log(customers, ' is my rng of customers');
+    var openHoursData = Math.floor(customers * avgCookieSale);
     console.log('hourly sale is', openHoursData);
+    cookieArray[i] = openHoursData;
+    console.log(cookieArray);
   }
   return cookieArray;
 }
@@ -23,10 +25,15 @@ function formArrayOfStores(event) {
 
   var openHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
   var location = event.target.location.value;
+  console.log(location, 'is where my new store is');
   var minCust = event.target.min_cust.value;
+  console.log(minCust, ' is my min cust');
   var maxCust = event.target.max_cust.value;
+  console.log(maxCust, ' is my max cust');
   var avgCookieSale = event.target.cookies_per_customer.value;
+  console.log(avgCookieSale, 'is my avg num cookies per sale');
   var numCookies = salesPerHour(maxCust, minCust, avgCookieSale, openHours.length);
+  console.log(numCookies, ' is my sales per hour based on RNG');
 
   arrayOfStores.push(new CookieStore(location, minCust, maxCust, avgCookieSale, openHours, numCookies));
   createTable();
@@ -45,6 +52,7 @@ function createTable() {
     '<td>' + arrayOfStores[i].numCookies + '</td>';
   }
   tableStoreDisplay.appendChild(row);
+  console.log(arrayOfStores);
 }
 
 function CookieStore(location, minCust, maxCust, avgCookieSale, openHours, numCookies) {
